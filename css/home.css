@@ -24,6 +24,7 @@
 header {
     background: #1c1c1c !important;
     color: white !important;
+    margin-bottom: 0 !important;
 }
 
 header a {
@@ -72,7 +73,7 @@ header a {
 	display: inline-block;
 }
 .carousel-inner {
-	height: 400px;
+	height: 550px;
 }
 #main-slider .carousel .item {
 	background-position: 50%;
