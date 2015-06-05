@@ -10,36 +10,39 @@
 		<link href="css/prettyPhoto.css" rel="stylesheet">	
 		<!-- <link href="css/main.css" rel="stylesheet"> -->
 		<link href="css/responsive.css" rel="stylesheet">
-		<link href="css/SAIL.css" rel="stylesheet">
-
+		<!-- <link href="css/SAIL.css" rel="stylesheet"> -->
+		<link href="css/home.css" rel="stylesheet">
 	</head>
 
 	<body class="homepage">
-		<header>
-			<div class="header-container">
-				<!-- logo of SAIL lab goes here -->
-				<div class="logo">
-					<a class="SAIL-logo" href="#">
-						<img src="img/logo.png" alt="SAIL">
-					</a>
-				</div>
-				
-				<!-- right navigation bar -->
-				<aside class="nav-bar">
-					<ul class="listnav-bar">
-						
-						<li class="active"> <a href="index.html">Home</a></li>
-						<li><a href="member.html">Members</a></li>
-						<li><a href="publication.html">Publications</a></li>
-						<li><a href="sponsors.html">Sponsors</a></li>
-						<li><a href="contact.html">Contact Info</a></li>
-					</ul>
-				</aside>	
-				
-			</div>
-			<!-- color separator between header and main part -->
-			<div class="color-border"></div>
-				
+		
+		<header class="navbar navbar-static-top navbar-default">
+
+		    <div class="container">
+		        <div class="navbar-header">
+		          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+		            <span class="sr-only">Toggle navigation</span>
+		            <span class="icon-bar"></span>
+		            <span class="icon-bar"></span>
+		            <span class="icon-bar"></span>
+		          </button>
+		         <!-- LOGO nằm trong thẻ a này -->
+		          <a class="navbar-brand" href="#">Brand</a>
+		        </div>
+
+		        <!-- MENU Nằm đây -->
+		        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		            <ul class="nav navbar-nav navbar-right" >
+		                <li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>
+		                <li><a href="member.html">Members</a></li>
+		                <li><a href="publication.html">Publications</a></li>
+		                <li><a href="sponsors.html">Sponsors</a></li>
+		                <li><a href="contact.html">Contact</a></li>
+		          </ul>
+		        </div>
+		    </div>
+
+		    <div class="color-border"></div>
 		</header>
 
 		<main>
@@ -52,7 +55,7 @@
 				      <li data-target="#main-slider" data-slide-to="2"></li>
 				    </ol>
 				    <div class="carousel-inner">
-				      <div class="item active" style="background-image: url(images/slider/bg1.jpg)">
+				      <div class="item active" style="background-image: url(img/slider/bg1.jpg)">
 				        <div class="container">
 				          <div class="row slide-margin">
 				            <div class="col-sm-12">
@@ -66,7 +69,7 @@
 				      </div>
 				      <!--/.item-->
 				      
-				      <div class="item" style="background-image: url(images/slider/bg2.jpg)">
+				      <div class="item" style="background-image: url(img/slider/bg2.jpg)">
 				        <div class="container">
 				          <div class="row slide-margin">
 				            <div class="col-sm-12">
@@ -80,7 +83,7 @@
 				      </div>
 				      <!--/.item-->
 				      
-				      <div class="item" style="background-image: url(images/slider/bg3.jpg)">
+				      <div class="item" style="background-image: url(img/slider/bg3.jpg)">
 				        <div class="container">
 				          <div class="row slide-margin">
 				            <div class="col-sm-12">
@@ -102,26 +105,28 @@
 			<div class="color-border"></div>
 
 			<section id="about-us">
+			
 				<div class="title-container">
 					<h1><strong>About us</strong></h1>
 					<p>Software Analysis and Intelligence Lab (SAIL)</p>
 				</div>
+				<div class="container">
+					<div class="info-container">
+						<p>The Software Analysis and Intelligence Lab (SAIL) is actively investigating approaches and creating techniques to support practitioners who are producing, maintaining and evolving large scale complex software systems. We aim to make the lives of these practitioners more productive, more cheerful and more predictable.</p>
 
-				<div class="info-container">
-					<p>The Software Analysis and Intelligence Lab (SAIL) is actively investigating approaches and creating techniques to support practitioners who are producing, maintaining and evolving large scale complex software systems. We aim to make the lives of these practitioners more productive, more cheerful and more predictable.</p>
+						<p>Early tools and techniques developed by members of SAIL are already integrated in products that are used by millions of users worldwide (see our publications). A few of our latest tools and research are now being adopted and used on a daily basis by practitioners in several software development organizations. Our close collaboration with industry directs us towards solving practical problems while using our academic experience to discover general scalable solutions that are validated through empirical industrial studies.</p>
 
-					<p>Early tools and techniques developed by members of SAIL are already integrated in products that are used by millions of users worldwide (see our publications). A few of our latest tools and research are now being adopted and used on a daily basis by practitioners in several software development organizations. Our close collaboration with industry directs us towards solving practical problems while using our academic experience to discover general scalable solutions that are validated through empirical industrial studies.</p>
+						<p>SAIL is located in the School of Computing at Queen’s University (ranked as one of the top 100 universities in the world). SAIL has open positions for Postdoctoral fellows, Research Assistants, Master's, PhD, and Summer students. If you are interested in joining SAIL, refer to our contact page for instructions.</p>
 
-					<p>SAIL is located in the School of Computing at Queen’s University (ranked as one of the top 100 universities in the world). SAIL has open positions for Postdoctoral fellows, Research Assistants, Master's, PhD, and Summer students. If you are interested in joining SAIL, refer to our contact page for instructions.</p>
+						<p>Research at SAIL lies in the intersection of software engineering and systems. In particular, SAIL researchers work in many of the following areas:</p>
 
-					<p>Research at SAIL lies in the intersection of software engineering and systems. In particular, SAIL researchers work in many of the following areas:</p>
-
-					<ul>
-						<li>Mining software repositories (e.g., CVS) to derive actionable information from static usually-neglected software data.</li>
-						<li>Software evolution and architecture to better understand and predict the growth of complex software systems.</li>
-						<li>Performance and load testing to ensure that Quality of Service (QoS) requirements are met in a cost effective manner for infrastructures in large data centers.</li>
-						<li>Debugging and monitoring of distributed systems to help practitioners manage large complex infrastructures while respecting Service Levels Agreements (SLA).</li>
-					</ul>
+						<ul>
+							<li>Mining software repositories (e.g., CVS) to derive actionable information from static usually-neglected software data.</li>
+							<li>Software evolution and architecture to better understand and predict the growth of complex software systems.</li>
+							<li>Performance and load testing to ensure that Quality of Service (QoS) requirements are met in a cost effective manner for infrastructures in large data centers.</li>
+							<li>Debugging and monitoring of distributed systems to help practitioners manage large complex infrastructures while respecting Service Levels Agreements (SLA).</li>
+						</ul>
+					</div>
 				</div>
 			</section>
 
@@ -138,7 +143,8 @@
 		</footer>
 
 		
-
+		<script type="text/javascript" src="js/jquery.js"></script>
+  		<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	</body>
 
 
