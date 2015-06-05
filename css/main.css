@@ -14,7 +14,8 @@ h1 {
 	font-size: 46px;
 	font-weight: 700;
 	color: #444;
-	letter-spacing: -2px;
+	letter-spacing: 2px;
+	text-align: center;
 }
 h2 {
 	font-size: 20px;
@@ -41,6 +42,18 @@ a:hover, a:focus {
 hr {
 	border-top: 1px solid #e5e5e5;
 	border-bottom: 1px solid #fff;
+}
+
+
+.header-container {
+	color: #1c1c1c;
+	width: 100%;
+	height: 200px;
+}
+
+.listnav-bar li {
+	display: inline-block;
+	margin-left: 15px;
 }
 .btn-primary {
 	padding: 8px 20px;
@@ -310,12 +323,13 @@ body > section {
 	padding-bottom: 0;
 }
 .color-border {
-	background: url(../images/color_border.jpg) repeat-x scroll center top;
+	background: url(../img/color_border.jpg) repeat-x scroll center top;
 	width: 100%;
 	float: left;
 	display: block;
 	height: 5px;
 }
+/*
 .features {
 	padding: 0;
 }
@@ -556,7 +570,7 @@ a.accordion-toggle i {
 	padding: 50px 0 60px 0;
 	text-align: center;
 	background: #f2f2f2;
-}
+}*/
 /*************************
 ********* About Us Page CSS ******
 **************************/
@@ -786,3 +800,8 @@ a.social-icon:hover, a.social-icon:active, a.social-icon:focus {
 	color: #3276b1;
 	border-color: #3276b1;
 }
+div.title-container {
+	color: #EEEEEE;
+	width: 500;
+}
+
