@@ -6,6 +6,10 @@
 	height: 6px;
 }
 
+#contact-info .contact-container {
+	padding-bottom: 40px;
+}
+
 #footer {
 	text-align: center;
 	background-color: #1c1c1c;
@@ -21,6 +25,10 @@
 	padding-top: 1px;
 }
 
+.image-container {
+	vertical-align: center;
+}
+
 .InfoContainer {
 	padding-top: 30px;
 	vertical-align: center;
@@ -33,8 +41,14 @@
 #about-us {
 	vertical-align: center;
 	padding-bottom: 30px;
-	font-size: 18px;
+	font-size: 16px;
 }
+
+#about-us .image-container {
+	vertical-align: center !important;
+
+}
+
 
 #about-us .title-container {
 	padding-top: 20px;
@@ -71,10 +85,10 @@ header .container {
 	padding: 0;
 }
 #main-slider .carousel .carousel-content {
-	margin-top: 150px;
+	margin-top: 50px;
 }
 #main-slider .carousel .slide-margin {
-	margin-top: 100px;
+	margin-top: 1px;
 }
 #main-slider .carousel .logo {
 	font-weight: 600;
@@ -103,7 +117,8 @@ header .container {
 	display: inline-block;
 }
 .carousel-inner {
-	height: 550px;
+	height: 850px;
+	/*width: 80%;*/
 }
 #main-slider .carousel .item {
 	background-position: 50%;
