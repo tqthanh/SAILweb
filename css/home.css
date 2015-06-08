@@ -21,6 +21,20 @@
 	padding-top: 1px;
 }
 
+.InfoContainer {
+	padding-top: 30px;
+	vertical-align: center;
+	text-align: justify;
+}
+.contact-info {
+	padding-bottom: 40px;
+}
+
+#about-us {
+	vertical-align: center;
+	padding-bottom: 30px;
+	font-size: 18px;
+}
 
 header {
     background: #1c1c1c !important;
@@ -30,6 +44,10 @@ header {
 
 header a {
     color: white !important;
+}
+
+header .navbar .active {
+	background-color: red;
 }
 
 /** SLIDER  **/
