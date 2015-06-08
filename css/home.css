@@ -36,6 +36,11 @@
 	font-size: 18px;
 }
 
+#about-us .title-container {
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
 header {
     background: #1c1c1c !important;
     color: white !important;
@@ -47,7 +52,13 @@ header a {
 }
 
 header .navbar .active {
-	background-color: red;
+
+}
+
+header .container {
+	padding-bottom: 40px;
+	padding-top: 20px;
+	font-size: 18px;
 }
 
 /** SLIDER  **/
