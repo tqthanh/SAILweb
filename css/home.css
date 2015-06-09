@@ -16,6 +16,8 @@
 	color: white;
 	padding-top: 1px;
 	padding-bottom: 1px;
+	
+    bottom:0;
 }
 
 .title-container {
@@ -27,6 +29,11 @@
 
 .image-container {
 	vertical-align: center;
+	text-align: center;
+}
+
+header .navbar {
+
 }
 
 .InfoContainer {
@@ -49,10 +56,14 @@
 
 }
 
+.active > a {
+	background-color: #66b83a !important;
+	border-radius: 10px;
+}
 
 .title-container {
-	padding-top: 20px;
-	padding-bottom: 20px;
+	padding-top: 5px;
+	padding-bottom: 10px;
 }
 
 header {
@@ -61,6 +72,11 @@ header {
     margin-bottom: 0 !important;
 }
 
+header .navbar-brand {
+	padding-bottom: 10px;
+	padding-top: 1px;
+	padding-left: 100px;
+}
 header a {
     color: white !important;
 }
@@ -70,7 +86,7 @@ header .navbar .active {
 }
 
 header .container {
-	padding-bottom: 40px;
+	padding-bottom: 10px;
 	padding-top: 20px;
 	font-size: 18px;
 }
