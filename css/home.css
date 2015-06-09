@@ -91,6 +91,11 @@ header .container {
 	font-size: 18px;
 }
 
+h5 {
+	color: green;
+	font-size: 18px;
+}
+
 /** SLIDER  **/
 #main-slider {
 	position: relative;

@@ -1,0 +1,376 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>Publication Browser</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+         <script type="text/javascript" src="../js/jquery-1.11.1.min.js"></script> 
+         <script type="text/javascript" src="../js/d3.3.5.5.min.js" charset="utf-8"></script>  
+         <script type="text/javascript" src="../keshif.js" charset="utf-8"></script> 
+        <link rel="stylesheet" href="../keshif.css"/ type="text/css">
+        <link rel="stylesheet" href="../font-awesome/css/font-awesome.min.css">
+
+         <script type="text/javascript" src="./js/moment.min.js" charset="utf-8"></script>
+       <script type="text/javascript" src="./js/demo.js" charset="utf-8"></script> 
+
+        <script type="text/javascript">
+var demoID = 7;
+var socialShare = false;
+var noRibbon = true;
+var BEDERSON_ID = 3;
+
+google.setOnLoadCallback(function() {
+    function resizeChart(){
+        var h=$(window).height()-90;
+        h = 700; // temp
+        var w=$(window).width()-29;
+        h = Math.max(h,500);
+        w = Math.max(w,700);
+        w-=50;
+        if($('#chart_div').height()===h && $('#chart_div').width()===w) return false;
+        $('#chart_div').height(h);
+        $('#chart_div').width (w);
+        return true;
+    }
+
+    resizeChart();
+    $(window).resize(function() {
+        if(resizeChart()) browser.updateLayout();
+    });
+
+    browser = new kshf.Browser({
+        domID: "#chart_div",
+        listMaxColWidthMult: 0.4,
+        categoryTextWidth:185,
+        source: {
+ //           gdocId: '0Ai6LdDWgaqgNdEp1aHBzSTg0T0RJVURqWVNGOGNkNXc',
+gdocId: '1oYZa9ShstALpzu-eqEkNdaNML6HKeoKY-j9PAEB3zQc',
+            sheets: [
+                {name: "Publications"},
+                {name: "Venues"},
+                {name: "Authors"},
+                //{name: "Keywords"},
+                {name: "VenueTypes"},
+                //{name: "AuthorTypes"}
+            ]
+        },
+        loadedCb: function(){
+            kshf.Util.cellToArray(kshf.dt.Publications, ['Authors']);
+        },
+        readyCb: function(){
+            $(".paperName").click(function(d){
+                browser.listDisplay.showListItemDetails(d.currentTarget.parentNode.parentNode.parentNode.__data__);
+            });
+            browser.listDisplay.showListItemDetails(kshf.dt.Publications[0]);
+        },
+        facets: [
+            /*{   title: "Topics", catTableName: "Keywords", catLabel: "keyword"
+            },*/{ title: "Authors",
+                attribMap: function(){
+                    var authors = this.Authors;
+console.log(this);
+                    // remove Ben Bederson's ID
+                    newAuthors = [];
+                    for(i=0 ; i<authors.length ; i++){
+                        //if(authors[i]!==BEDERSON_ID) 
+newAuthors.push(authors[i]);
+                    }
+                    return newAuthors;
+                },
+                catTableName: "Authors",
+                catLabel: function(){ return this.Name/*+". "+this.last_name*/; },
+
+                catTooltip: function(){ return this.Name/*+" "+this.last_name*/; },
+                /*facets: [
+                    {   title: "Type",
+                        attribMap: function(){ return this.author_type; },
+                        catTableName: "AuthorTypes",
+                        catLabel: "keyword"
+                    }
+                ]*/
+            },
+            /*{ title: "Publication Type", attribMap: "type",
+                catLabel: function(){ return kshf.dt_id.VenueTypes[this.id].data.keyword; }
+            },*/
+            { title: "Publication Year", attribMap: "Year",
+                catLabel: function(){ return this.id;  }
+            },
+            { title: "Venue", catTableName: "Venues", catLabel: "venue",
+            }
+            
+            /*,{ title: "Date", layout: 'middle'
+            }*/
+        ],
+        itemDisplay: {
+            sortColWidth: 45,
+            sortingOpts: [ {name: 'Year', value: function(){ return this.Year} } ],
+            textSearch: 'title',
+            detailsToggle: "one",
+            autoExpandMore: false,
+            recordView: function(){
+                var j;
+                var str="";
+
+                /*if(this.img!==""&&this.img!==null){
+                    str+="<img class='pdfImage' src='"+this.img+"'>";
+                }*/
+
+                // paper name
+                    str+="<div class=''> <span>";
+                    str+="<span class='paperName'>"+this.Title+"</span>";
+
+                    /*if(this.pdf!==""&&this.pdf!==null){
+                        str+="<a class='pubLink pdflink fa fa-file-pdf-o' href='"+this.pdf+"' target='_blank'></a>";
+                    }
+                    if(this.doi!==""&&this.doi!==null){
+                        str+="<a class='pubLink doilink' href='http://dx.doi.org/"+this.doi+"' target='_blank'>[doi]</a>";
+                    }*/
+                    if(this.URL.trim()!==""){
+                        
+str+=" <a class='portfolio-link' data-toggle='modal' href='"+this.URL+"' "+
+                                ">SLIDES</a>";
+                    }
+                    str+="</div>";
+
+                str+="<span class='item_details'>";
+
+                // author names
+                var authors = this.Authors;
+                    str+="<div class=\"authorNames\"><span class='header'></span> ";
+                    for(j=0; j<authors.length; j++){
+                        var authData=kshf.dt_id.Authors[authors[j]].data;
+                        //if(authData.id===BEDERSON_ID) { str+="<span class='benb'>"; }
+                        str+=authData.Name/*+" "+authData.last_name*/;
+                        //if(authData.id===BEDERSON_ID) { str+="</span>"; }
+                        if(j!==authors.length-1) { str+=', '; }
+                    }
+                    str+="</div>";
+
+                // Venue + details
+                    str+="<div class='venueInfo'><span style='font-weight:bolder;'>"+this.Details+"</span>";
+                    /*if(this.Venue) {
+                        str+=" " + kshf.dt_id.Venues[this.Venue].data[2];
+                    }*/
+                    /*if(this.details.trim()!=="") {
+                        str+=this.details;
+                    }*/
+                    str+="</div>";
+               /* // keywords
+                    var cats = this.Topics;
+                    if(cats.length>0){
+                        str+="<div class=\"topics\"> <span class='header'>Topics</span>: ";
+                        for(j=0; j<cats.length; j++){
+                            str+=kshf.dt_id.Keywords[cats[j]].data.keyword;
+                            if(j!==cats.length-1) { str+=', '; }
+                        }
+                        str+="</div>";
+                    }
+*/
+                // award
+                    /*if(this.award!==""&this.award!==null){
+                        str+="<div class=\"iteminfo iteminfo_3\">&#9733; "+this.award+"</div>";
+                    }*/
+
+                return str;
+            }
+        }
+    });
+});
+
+</script>
+<style>
+
+#chart_div .bar_style_coauthor_FA{ background-color: #4D8B4D; }
+#chart_div .bar_style_coauthor_ST{ background-color: #FCC240; }
+#chart_div .bar_style_coauthor_RE{ background-color: #BF4B31; }
+#chart_div .bar_style_coauthor_IN{ background-color: #4B3929; }
+
+.header{
+    font-weight: 700;
+    font-variant: small-caps;
+}
+
+#chart_div {
+    background-color: white;
+    margin: 0px 25px 20px 25px;
+}
+
+#pagecell{
+    position: relative;
+    top: 30px;
+    left: 15px;
+    
+    display:inline-block;
+    background-color: #ffffff;
+}
+
+body {
+    font-family: Arial,sans-serif;
+    color: #333333;
+    margin: 0px;
+    padding: 0px;
+    background: #cccccc fixed;
+}
+
+#pageName {
+    padding: 0px 0px 14px 10px;
+    margin: 0px;
+}
+
+#pageName h2 {
+    font: bold 175% Arial,sans-serif;
+    color: #000000;
+    margin: 0px;
+    padding: 0px;
+}
+
+#pageName img {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    padding: 0px;
+    margin: 0px;
+    z-index:2;
+}
+
+#pageName a.mainTitle:link, a.mainTitle:visited{
+    color: #005FA9;
+    text-decoration: none;
+}
+
+#pageName a.mainTitle:hover{
+    text-decoration: underline;
+}
+
+.KeshifCredit{
+    float:right;
+    margin: 15px;
+    font-size: 0.5em;
+    font-style: italic;
+    color: lightgray;
+    text-decoration: none;
+}
+.KeshifCredit:hover{
+    color: gray;
+}
+
+.paperName{
+    cursor:pointer;
+}
+.paperName:hover{
+    color: orangered;
+}
+.authorNames{
+    font-weight: 300;
+}
+.benb{
+    font-style: italic;
+}
+.doilink{
+    margin-left: 10px;
+    font-size: 0.7em;
+    vertical-align: top;
+}
+.externallink{
+    margin-left: 3px;
+    font-size: 0.7em;
+    vertical-align: top;
+}
+.pdflink{
+    margin-left: 10px;
+    vertical-align: top;
+}
+.item_details{
+    margin-left: 5px;
+}
+.venueInfo{
+    margin-left: 5px;
+    font-size: 0.9em;
+    font-weight: 300;
+}
+.topics{
+    font-size: 0.9em;
+    font-weight: 300;
+    margin-left: 5px;
+    font-variant: small-caps;
+}
+.pubLink{
+    color: #005FA9;
+    display: inline-block;
+    text-decoration: none;
+}
+.pubLink:hover {
+    color: orangered !important;
+    text-decoration: none;
+}
+
+.pdfImage{
+    position:absolute;
+    right: 0px;
+    height: 100%;
+}
+.content{
+    padding-bottom: 4px;
+    padding-right: 40px;
+}
+#portfolio .portfolio-item {
+    right: 0;
+    margin: 0 0 15px;
+}
+
+#portfolio .portfolio-item .portfolio-link {
+    display: block;
+    position: relative;
+    margin: 0 auto;
+    max-width: 400px;
+}
+
+#portfolio .portfolio-item .portfolio-link .caption {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    background: rgba(24,188,156,.9);
+    -webkit-transition: all ease .5s;
+    -moz-transition: all ease .5s;
+    transition: all ease .5s;
+}
+
+#portfolio .portfolio-item .portfolio-link .caption:hover {
+    opacity: 1;
+}
+
+#portfolio .portfolio-item .portfolio-link .caption .caption-content {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    height: 20px;
+    margin-top: -12px;
+    text-align: center;
+    font-size: 14px;
+    color: #fff;
+}
+
+#portfolio .portfolio-item .portfolio-link .caption .caption-content i {
+    margin-top: -12px;
+}
+
+#portfolio .portfolio-item .portfolio-link .caption .caption-content h3,
+#portfolio .portfolio-item .portfolio-link .caption .caption-content h4 {
+    margin: 0;
+}
+
+
+</style>
+	</head>
+
+<body>
+    <div id="pagecell">
+        <div id="pageName">
+            
+        </div>
+    	<div id="chart_div"></div>
+    </div>
+</body>
+</html>
