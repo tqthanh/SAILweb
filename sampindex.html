@@ -66,7 +66,7 @@ gdocId: '1oYZa9ShstALpzu-eqEkNdaNML6HKeoKY-j9PAEB3zQc',
         },
         facets: [
             /*{   title: "Topics", catTableName: "Keywords", catLabel: "keyword"
-            },*/{ title: "Authors", layout: 'middle', collapsed: true ,
+            },*/{ title: "Authors", layout: 'right', collapsed: false ,
                 attribMap: function(){
                     var authors = this.Authors;
 console.log(this);
@@ -93,10 +93,10 @@ newAuthors.push(authors[i]);
             /*{ title: "Publication Type", attribMap: "type",
                 catLabel: function(){ return kshf.dt_id.VenueTypes[this.id].data.keyword; }
             },*/
-            { title: "Publication Year", attribMap: "Year", layout: 'middle', collapsed: true ,
+            { title: "Publication Year", attribMap: "Year", layout: 'right', collapsed: false ,
                 catLabel: function(){ return this.id;  }
             },
-            { title: "Venue", catTableName: "Venues", catLabel: "venue", layout: 'middle', collapsed: true ,
+            { title: "Venue", catTableName: "Venues", catLabel: "venue", layout: 'right', collapsed: false ,
             }
             
             /*,{ title: "Date", layout: 'middle'

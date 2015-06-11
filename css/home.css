@@ -36,6 +36,11 @@ header .navbar {
 
 }
 
+#member-category .a {
+	display: block !important;
+    width: 60px;
+}
+
 .InfoContainer {
 	padding-top: 30px;
 	vertical-align: center;
