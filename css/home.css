@@ -9,7 +9,10 @@
 #contact-info .contact-container {
 	padding-bottom: 40px;
 }
-
+.col-sm-3 {
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
 #footer {
 	text-align: center;
 	background-color: #1c1c1c;
