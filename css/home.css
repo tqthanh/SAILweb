@@ -19,7 +19,9 @@
 	
     bottom:0;
 }
-
+.InfoContainer {
+	padding-top: 20px;
+}
 .title-container {
 	background-color: #EEEEEE !important;
 	text-align: center;
@@ -129,7 +131,9 @@ h5 {
 	padding: 0;
 }
 #main-slider .carousel .carousel-content {
-	margin-top: 50px;
+	margin-top: 30px;
+
+
 }
 #main-slider .carousel .slide-margin {
 	margin-top: 1px;
