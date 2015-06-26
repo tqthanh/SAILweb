@@ -6,6 +6,15 @@
 	height: 6px;
 }
 
+#main-slider img {
+	box-shadow: 1px 3px 3px #9E9E9E;
+}
+
+#member-category {
+	background-color: #FAFAFA !important;
+	box-shadow: 1px 2px 3px #9E9E9E;
+}
+
 #contact-info .contact-container {
 	padding-bottom: 40px;
 }
@@ -26,13 +35,15 @@
 	padding-top: 20px;
 }
 .title-container {
-	background-color: #EEEEEE !important;
+	background-color: #FAFAFA !important;
 	text-align: center;
 	color: #333333;
 	padding-top: 1px;
+	box-shadow: 0px 2px 3px #9E9E9E;
 }
 
 .image-container {
+	padding-top: 20px;
 	vertical-align: center;
 	text-align: center;
 }
@@ -54,6 +65,14 @@ h
 	font-size: 16px;
 }
 
+#contact-info {
+	font-size: 16px;
+}
+
+#sponsor-info {
+	font-size: 16px;
+}
+
 #about-us .image-container {
 	vertical-align: center !important;
 
@@ -61,6 +80,7 @@ h
 
 .active > a {
 	background-color: #66b83a !important;
+	color: white !important;
 	border-radius: 10px;
 }
 
@@ -70,9 +90,13 @@ h
 }
 
 header {
-    background: #1c1c1c !important;
-    color: white !important;
+    background: #FAFAFA !important;
+    color: #333333 !important;
     margin-bottom: 0 !important;
+}
+
+#bs-example-navbar-collapse-1 {
+	padding-top: 12px;
 }
 
 header .navbar-brand {
@@ -81,7 +105,7 @@ header .navbar-brand {
 	padding-left: 100px;
 }
 header a {
-    color: white !important;
+    color: #212121 !important;
 }
 
 #member-category {
